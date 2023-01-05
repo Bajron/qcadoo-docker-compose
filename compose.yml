@@ -1,0 +1,19 @@
+version: "3.9"
+services:
+  qcadoo:
+    build: .
+    ports:
+      - "8080:8080"
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD_FILE: /run/secrets/postgres-passwd
+    volumes:
+      - ./database:/var/lib/postgresql/data
+      - ./secrets:/run/secrets
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8888:8080
