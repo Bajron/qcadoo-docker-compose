@@ -1,3 +1,5 @@
 .dockerignore
+/logs
+/database
 tmp
 compose.yml
