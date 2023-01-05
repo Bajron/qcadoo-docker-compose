@@ -12,6 +12,7 @@ services:
     volumes:
       - ./logs:/opt/qcadoo/mes-application/logs
     user: "${UID:-0}"
+
   db:
     image: postgres_qcadoo
     build:
@@ -25,6 +26,7 @@ services:
     volumes:
       - ./database:/var/lib/postgresql/data
       - ./secrets:/run/secrets:ro
+
   adminer:
     image: adminer
     restart: always
