@@ -5,16 +5,16 @@ services:
     build:
       context: .
       dockerfile: ./qcadoo.Dockerfile
+    restart: always
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080"
     depends_on:
       - db
     volumes:
       - ./logs:/opt/qcadoo/mes-application/logs
-    user: "${UID:-0}"
 
   db:
-    image: postgres_qcadoo
+    image: qcadoo_postgres
     build:
       context: .
       dockerfile: ./postgres.Dockerfile
@@ -31,6 +31,6 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8888:8080
+      - 127.0.0.1:8888:8080
     depends_on:
       - db
