@@ -20,15 +20,21 @@ docker-compose build
 docker-compose up
 ```
 
-If you are not afraid of scripts calling sudo and installing stuff.
-On Ubuntu (or something with apt-get) you can try `./init.sh`.
+If you are not afraid of scripts calling `sudo` and installing stuff.
+On Ubuntu (or something with `apt-get`) you can try `./init.sh`.
 
 Then visit http://localhost:8080
 
-You get also adminer on http://localhost:8888
+You also get adminer on http://localhost:8888
 
 ## Configuration
 
 You can find the DB password in `secrets` directory.
 
 Ports (and many other things) can be adjusted in the `compose.yml` file.
+
+## Known issues
+
+There are some mounts for logs and database,
+but the permissions are not handled nicely yet.
+You can clean it up with something like `sudo rm ./logs/*.log` or `sudo rm -rf ./database/pgdata`.
