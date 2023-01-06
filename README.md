@@ -22,10 +22,11 @@ docker-compose up
 or
 ```
 docker-compose up --build -d
+docker-compose logs
 ```
 
-If you are not afraid of scripts calling `sudo` and installing stuff.
-On Ubuntu (or something with `apt-get`) you can try `./init.sh`.
+If you are not afraid of scripts calling `sudo` and installing stuff,
+on Ubuntu (or something with `apt-get`), you can try `./activate.sh`.
 
 Then visit http://localhost:8080
 
@@ -36,15 +37,28 @@ You also get adminer on http://localhost:8888
 A hint about `docker-compose`.
 
 You can stop the services with `Ctrl+C` when you run it in foreground mode.
-You can also run `docker-compose stop` from another terminal with the same effect. After just stopping the services, they will restart after you reboot the computer.
+You can also run `docker-compose stop` from another terminal with the same effect.
+After just stopping the services, they will restart after you reboot the computer.
 
 If you want to remove the services, and do not run them with every reboot, execute `docker-compose down`.
+
+The `./deactivate.sh` script does exactly that.
 
 ## Configuration
 
 You can find the DB password in `secrets` directory.
 
-Ports (and many other things) can be adjusted in the `compose.yml` file.
+Ports (and many other things) can be adjusted in the `docker-compose.yml` file.
+
+For example, if you want to expose the service on every network interface,
+change port definition in `docker-compose.yml`:
+```
+"127.0.0.1:8080:8080"
+```
+to
+```
+"8080:8080"
+```
 
 ## Known issues
 
