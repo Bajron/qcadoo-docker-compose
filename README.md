@@ -19,6 +19,10 @@ If you have docker and docker-compose, simply
 docker-compose build
 docker-compose up
 ```
+or
+```
+docker-compose up --build -d
+```
 
 If you are not afraid of scripts calling `sudo` and installing stuff.
 On Ubuntu (or something with `apt-get`) you can try `./init.sh`.
@@ -26,6 +30,15 @@ On Ubuntu (or something with `apt-get`) you can try `./init.sh`.
 Then visit http://localhost:8080
 
 You also get adminer on http://localhost:8888
+
+## Stopping
+
+A hint about `docker-compose`.
+
+You can stop the services with `Ctrl+C` when you run it in foreground mode.
+You can also run `docker-compose stop` from another terminal with the same effect. After just stopping the services, they will restart after you reboot the computer.
+
+If you want to remove the services, and do not run them with every reboot, execute `docker-compose down`.
 
 ## Configuration
 
